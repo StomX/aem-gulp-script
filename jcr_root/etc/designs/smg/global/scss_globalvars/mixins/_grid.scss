@@ -1,0 +1,116 @@
+@mixin make-container {
+    @include clearfix;
+    margin:0 auto;
+    background-color:$white;
+    width: 100%;
+    overflow: hidden;
+}
+
+@mixin make-row($gutter) {
+    @include clearfix;
+    margin-left:0;
+    margin-right: $gutter;
+    overflow:visible;
+}
+
+@mixin make-col {
+    border:0px solid rgba(0,0,0,0);
+    float:left;
+    box-sizing:border-box;
+    background-clip:padding-box !important;
+    padding:0 0%;
+    position: relative;
+}
+
+@mixin make-span($num, $gutter-px, $padding, $max-columns) {
+    @include make-col;
+    $one-col: 100% / $max-columns;
+    width: $one-col * $num;
+    border-left-width: $gutter-px;
+    padding:$padding;
+}
+
+@mixin make-span-first($gutter-px) {
+    @include make-col;
+    border-left-width: $gutter-px;
+    margin-left:0;
+}
+
+@mixin make-span-half ($gutter-px) {
+    @include make-col;
+    width: 50%;
+    &:first-child {
+        border-left-width: 0px !important;
+    }
+    &:nth-child(2) {
+        border-left-width: $gutter-px;
+        margin-right: -$gutter-px !important;
+    }
+}
+
+@mixin make-nested-span ($parent-col, $nested-col, $gutter-px, $location){
+    @include make-col;
+    @if($location == right) {
+        border-right-width: $gutter-px;
+    }
+    @if($location ==left) {
+        border-left-width: $gutter-px;
+    }
+    width: ($nested-col / $parent-col) * 100%;
+    margin: 0 ((100% - ($nested-col / $parent-col) * 100%) / 2);
+
+}
+
+@mixin make-span-full($gutter) {
+    margin-right: -$gutter;
+    position: relative;
+}
+
+@mixin make-span-sm($col) {
+    @include sm {
+        @include make-span($col, $gutter-px-sm, $padding-sm, $max-columns-sm);
+    }
+}
+
+@mixin make-span-lg($col) {
+    @include lg{
+        @include make-span($col, $gutter-px-lg, $padding-lg, $max-columns-lg);
+    }
+}
+
+//offset for static element
+@mixin make-col-offset-sm($col) {
+    @include sm {
+        margin-left: percentage(($col / $max-columns-sm)) !important;
+    }
+}
+
+@mixin make-col-offset-lg($col) {
+    @include lg {
+       margin-left: percentage(($col / $max-columns-lg)) !important;
+    }
+}
+//offset for positioned element
+@mixin make-col-push-sm($col){
+    @include sm {
+        left: percentage(($col / $max-columns-sm)) !important;
+    }
+}
+
+@mixin make-col-push-lg($col){
+    @include lg {
+        left: percentage(($col / $max-columns-lg)) !important;
+    }
+}
+
+@mixin make-col-pull-sm($col){
+    @include sm {
+        right: percentage(($col / $max-columns-sm)) !important;
+    }
+}
+
+@mixin make-col-pull-lg($col){
+    @include lg {
+        right: percentage(($col / $max-columns-lg)) !important;
+    }
+}

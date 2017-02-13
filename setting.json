@@ -1,0 +1,23 @@
+{
+    "source": {
+        "path": {
+            "root": "jcr_root/",
+            "js": "**/devjs/*.js",
+            "scss": "**/scss/*.scss",
+            "less": "**/less/*.less"
+        }
+    },
+    "output": {
+    	"dirname":{
+    		"js":"js",
+    		"css":"css"
+    	},
+    	"basename":"main"
+    },
+    "clean": {
+    	"path": {
+            "js": "**/js",
+            "css": "**/css"
+    	}
+    }
+}

@@ -1,0 +1,11 @@
+// Retinize
+@mixin retinize($path,$file,$type,$width,$height){
+	background-image:url($path + '/' + $file + '.' + $type);
+	@media (max-width:$screen-sm) {
+	   	& {
+	   		background-image:url($path + '/' + $file + '_x2.' + $type);
+	   		-wekit-background-size:$width $height;
+	   		background-size:$width $height;
+	   	}
+	}
+}

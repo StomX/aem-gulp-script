@@ -1,0 +1,31 @@
+@include breakpoint(mobile) {
+    .#{$component-name} {
+        &__text-wrap {
+            left: 0;
+            right: 0;
+            width: auto;
+            @include vw-convert-mo(padding-top, 50);
+            padding-left: 16px;
+            padding-right: 16px;
+            text-align: center;
+        }
+        &__title {
+            @include vw-convert-mo(font-size, 44);
+            line-height: 1.18;
+        }
+        &__desc {
+            width: 100%;
+            @include vw-convert-mo(margin-top, 17);
+            @include vw-convert-mo(font-size, 14);
+        }
+        &__btn-wrap {
+            @include vw-convert-mo(margin-top, 20);
+        }
+        .s-media-close {
+            @include vw-convert-mo(#{$opp-float}, 16);
+        }
+        .slick-dots {
+            padding: 6px 7px 6px 6px;
+        }
+    }
+}

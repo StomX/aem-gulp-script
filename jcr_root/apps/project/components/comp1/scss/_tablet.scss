@@ -1,0 +1,7 @@
+@include breakpoint(tablet) {
+    .#{$component-name} {
+        &__desc {
+            @include vw-convert-tb(font-size, 16);
+        }
+    }
+}
