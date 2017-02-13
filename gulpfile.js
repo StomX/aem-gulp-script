@@ -61,7 +61,6 @@ $.gulp.task( 'compile:less', function () {
     .pipe( $.uglifycss() )
     .pipe( $.sourcemaps.write() )
     .pipe( $.rename( function ( path ) {
-      console.log( path );
       path.dirname = dirname.split( 'less' )
         .join( 'css/' );
       path.basename = init.output.basename;
