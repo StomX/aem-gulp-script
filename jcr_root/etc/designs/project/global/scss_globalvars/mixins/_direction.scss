@@ -1,0 +1,36 @@
+// direction mixin
+@mixin float($dir) {
+	@if $dir == left {
+		float: $def-float;
+	} @else if $dir == right {
+		float: $opp-float;
+	} @else {
+		float: $dir;
+	}
+}
+
+@mixin text-align($dir) {
+  	@if $dir == left {
+	    text-align: $def-float;
+	} @else if $dir == right {
+	    text-align: $opp-float;
+	} @else {
+	    text-align: $dir;
+  	}
+}
+
+@mixin padding-left($unit) {
+	padding-#{$def-float}: $unit;
+}
+
+@mixin padding-right($unit) {
+	padding-#{$opp-float}: $unit;
+}
+
+@mixin margin-left($unit) {
+	padding-#{$def-float}: $unit;
+}
+
+@mixin margin-right($unit) {
+	padding-#{$opp-float}: $unit;
+}

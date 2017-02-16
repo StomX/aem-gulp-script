@@ -1,0 +1,89 @@
+.#{$component-name} {
+	overflow: hidden;
+	position: relative;
+	max-width: 1440px;
+	margin: 0 auto;
+	&__slide {
+		position: relative;
+	}
+	&__text-wrap {
+		position: absolute;
+		top: 0;
+		left: 8.33%;
+		z-index: 1;
+		width: 83.33%;
+		@include vw-convert-pc(padding-top,116);
+		padding-left: 12px;
+		padding-right: 12px;
+		color: #fff;
+		text-align: center;
+		box-sizing: border-box;
+		&.s-black{
+			color: #000;
+		}
+		&.s-white{
+			color: #fff;
+		}
+	}
+	&__title {
+		font-family: $sharpSans;
+		font-weight: bold;
+		@include vw-convert-pc(font-size,76);
+		line-height: 1.16;
+	}
+	&__desc {
+		width: 60%;
+		margin-left: auto;
+		margin-right: auto;
+		@include vw-convert-pc(margin-top,6);
+		@include vw-convert-pc(font-size,18);
+		line-height: 1.78;
+	}
+	&__btn-wrap {
+		@include vw-convert-pc(margin-top,30);
+	}
+	&__bg-wrap {
+		img{
+			max-width: 100%;
+			height: auto;
+		}
+	}
+	
+	.slick-dots {
+		left: 50%;
+	    width: auto;
+	    margin: 0 auto;
+	    padding: 6px;
+	    border-radius: 20px;
+	    background: #363636;
+	    background: rgba(54,54,54,.7);
+	    -webkit-transform: translateX(-50%);
+				transform: translateX(-50%);
+	    li {
+	        button {
+	            border-color: #fff;
+	        }
+	        &.slick-active button, button:hover, button:focus {
+	            border:0;
+	            background-color:#fff;
+	        }
+	    }
+	}
+	&.s-video-open .slick-arrow, &.s-video-open .slick-dots{
+		z-index: -1;
+	}
+	.s-media-close {
+		#{$opp-float}: 68px;
+	}
+}
+
+@media (-webkit-min-device-pixel-ratio:1.2) {
+	.#{$component-name} {
+		&__text-wrap {
+			@include vw-convert-pc(padding-top,102);
+		}
+		&__desc {
+			@include vw-convert-pc(margin-top,20);
+		}
+	}
+}

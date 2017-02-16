@@ -1,0 +1,14 @@
+///********************///
+///*    Direction     *///
+///********************///
+
+// LTR languages directions.
+
+$def-float: left;
+$opp-float: right;
+
+$def-direction: ltr;
+$opp-direction: rtl;
+
+@import 'variables';
+@import 'mixins';

@@ -1,0 +1,9 @@
+// Text Styling
+@mixin multi-ellipsis($line){
+	display:block;
+	display:-webkit-box;
+	overflow:hidden;
+	-webkit-line-clamp:$line;
+	-webkit-box-orient:vertical;
+	text-overflow:ellipsis;
+}

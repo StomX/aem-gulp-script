@@ -5,18 +5,13 @@
     "fs": "0.0.1-security",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
+    "gulp-clean-css": "^3.0.2",
     "gulp-concat": "^2.6.1",
-    "gulp-exit": "0.0.2",
-    "gulp-if": "^2.0.2",
     "gulp-less": "^3.3.0",
     "gulp-load-plugins": "^1.5.0",
-    "gulp-nunjucks": "^3.0.0",
-    "gulp-remove-empty-lines": "0.0.8",
     "gulp-rename": "^1.2.2",
-    "gulp-replace": "^0.5.4",
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.4.1",
-    "gulp-uglify": "^2.0.1",
-    "gulp-uglifycss": "^1.0.6"
+    "gulp-uglify": "^2.0.1"
   }
 }
