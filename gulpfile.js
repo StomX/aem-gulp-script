@@ -6,21 +6,7 @@ const $ = require( 'gulp-load-plugins' )( {
 $.gulp.task( 'default', function () {} );
 
 $.gulp.task( 'compile:js', function () {
-    // return $.gulp.src( init.source.path.js )
-    //     .pipe( $.sourcemaps.init() )
-    //     .pipe( $.recursiveConcat( 'main.js' ) )
-    //     //.pipe( $.uglify() )
-    //     .pipe( $.sourcemaps.write() )
-    //     .pipe( $.rename( function ( path ) {
-    //         var dirname = path.dirname;
-    //         path.dirname = dirname.replace( 'devjs', 'js/' );
-    //         path.basename = init.output.basename;
-    //         path.extname = '.js';
-    //     } ) )
-    //     .pipe( $.gulp.dest( 'jcr_root/' ) );
-    return $.gulp.src( '**/devjs/{*,}/', {
-            base: 'jcr_root/'
-        } )
+    return $.gulp.src( 'jcr_root/**/devjs/{*,}/' )
         .pipe( $.flatmap( function ( stream, dir ) {
             return $.gulp.src( dir.path + '/*.js' )
                 .pipe( $.sourcemaps.init() )
@@ -28,7 +14,7 @@ $.gulp.task( 'compile:js', function () {
                 .pipe( $.uglify() )
                 .pipe( $.rename( function ( path ) {
                     var dirname = dir.path.split( 'jcr_root\\' )[ 1 ];
-                    path.dirname = 'jcr_root/' + dirname.replace( 'devjs', 'js/' );
+                    path.dirname = 'jcr_root/' + dirname.replace( 'devjs', 'js/' ).replace(/\\/g,'/');
                 } ) )
                 .pipe( $.sourcemaps.write() )
                 .pipe( $.gulp.dest( './' ) );
@@ -36,7 +22,7 @@ $.gulp.task( 'compile:js', function () {
 } );
 
 $.gulp.task( 'compile:sass', function () {
-    return $.gulp.src( init.source.path.scss )
+    return $.gulp.src( 'jcr_root/**/scss/{*,}/' )
         .pipe( $.sourcemaps.init() )
         .pipe( $.sass() )
         .pipe( $.cleanCss( {
@@ -57,7 +43,7 @@ $.gulp.task( 'compile:sass', function () {
 } );
 
 $.gulp.task( 'compile:less', function () {
-    return $.gulp.src( init.source.path.less )
+    return $.gulp.src( 'jcr_root/**/less/{*,}/' )
         .pipe( $.sourcemaps.init() )
         .pipe( $.less() )
         .pipe( $.cleanCss( {
@@ -87,6 +73,27 @@ $.gulp.task( 'clean:css', function () {
         .pipe( $.clean() );
 } );
 
-$.gulp.task( 'compile:all', [ 'compile:js', 'compile:sass' ] );
-$.gulp.task( 'clean:all', [ 'clean:js', 'clean:css' ] )
+$.gulp.task( 'deploy:clientlibJS', function() {
+    return $.gulp.src('jcr_root/**/js/*.js')
+            .pipe( $.slang() );
+});
 
+$.gulp.task( 'deploy:clientlibCSS', function() {
+    return $.gulp.src('jcr_root/**/css/*.css')
+            .pipe( $.slang() );
+});
+
+$.gulp.task( 'deploy:componentHTML', function() {
+    return $.gulp.src('jcr_root/**/components/**/*.html')
+            .pipe( $.slang() );
+});
+
+$.gulp.task( 'deploy:componentJS', function() {
+    return $.gulp.src(['jcr_root/**/*.js', '!jcr_root/**/clientlib/**/*.js'])
+            .pipe( $.slang() );
+});
+
+
+$.gulp.task( 'compile', [ 'compile:js', 'compile:sass' ] );
+$.gulp.task( 'clean', [ 'clean:js', 'clean:css' ] )
+$.gulp.task( 'deploy', [ 'deploy:clientlibJS', 'deploy:clientlibCSS', 'deploy:componentHTML','deploy:componentJS'] )
