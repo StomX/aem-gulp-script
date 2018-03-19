@@ -1,6 +1,6 @@
 {
 	"name":            "base",
-	"version":         "0.0.1",
+	"version":         "0.0.5",
 	"devDependencies": {
 		"fs":                "0.0.1-security",
 		"gulp":              "^3.9.1",
