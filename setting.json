@@ -1,21 +1,27 @@
 {
-    "source": {
-        "path": {
+    "source":
+    {
+        "path":
+        {
             "root": "jcr_root/",
             "js": ["jcr_root/**/clientlibs/devjs/*.js", "jcr_root/**/clientlibs-rtl/devjs/*.js"],
             "scss": ["jcr_root/**/clientlibs/scss/*.scss", "jcr_root/**/clientlibs-rtl/scss/*.scss"],
             "less": ["jcr_root/**/clientlibs/less/*.less", "jcr_root/**/clientlibs-rtl/less/*.less"]
         }
     },
-    "output": {
-        "dirname": {
+    "output":
+    {
+        "dirname":
+        {
             "js": "js",
             "css": "css"
         },
         "basename": "main"
     },
-    "clean": {
-        "path": {
+    "clean":
+    {
+        "path":
+        {
             "js": "**/js",
             "css": "**/css"
         }
