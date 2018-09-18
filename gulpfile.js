@@ -2,7 +2,9 @@ const $ = require('gulp-load-plugins')({
         pattern: ['gulp*', 'gulp-*', 'gulp.*', '@*/gulp{-,.}*', 'fs']
     }),
     init = JSON.parse($.fs.readFileSync('./setting.json'));
-$.gulp.task('default', function() {});
+$.gulp.task('default', function() {
+    console.log( '=== GULP DEFAULT ===' );
+});
 $.gulp.task('compile:js', function() {
     return $.gulp.src('jcr_root/**/devjs/{*,}/')
         .pipe($.flatmap(function(stream, dir) {
