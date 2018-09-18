@@ -3,6 +3,9 @@ node_js:
   - "4.3.2"
 install:
   - npm install
+cache:
+  directories:
+    - "node_modules"
 script:
   - npm test
   - gulp dev
